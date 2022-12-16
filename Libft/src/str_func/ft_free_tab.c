@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:21:18 by jlitaudo          #+#    #+#             */
-/*   Updated: 2022/12/05 14:22:59 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:30:18 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**free_tab(char **tab)
+char	**ft_free_tab(char **tab)
 {
 	int	i;
 

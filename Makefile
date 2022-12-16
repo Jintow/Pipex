@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+         #
+#    By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 13:00:31 by jlitaudo          #+#    #+#              #
-#    Updated: 2022/12/14 14:32:08 by jlitaudo         ###   ########.fr        #
+#    Updated: 2022/12/16 20:42:31 by Teiki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,14 @@
 #########################
 
 # Folders and names
-NAME		:=	pipex
+NAME		:= pipex
 
 HEAD_DIR	:=	headers/
-LIST_HEAD	:=	push_swap.h\
-				checker.h
+LIST_HEAD	:=	pipex.h
+
 HEAD		:= $(addprefix $(HEAD_DIR), $(LIST_HEAD))
 
 LIST_SORT	:=	
-
 
 SORT_DIR	:=	sorting/
 SORTING		:=	$(addprefix $(SORT_DIR), $(LIST_SORT))
@@ -33,7 +32,8 @@ LIST_TOOLS	:=
 TOOLS_DIR	:=	tools/
 TOOLS		:=	$(addprefix $(TOOLS_DIR), $(LIST_TOOLS))
 
-LIST_CHECK	:=	
+LIST_CHECK	:=	init_fd_files.c\
+				init_cmd.c\
 
 CHECK_DIR	:=	checking/
 CHECKING	:=	$(addprefix $(CHECK_DIR), $(LIST_CHECK))
@@ -68,7 +68,7 @@ OBJ_BONUS	:= $(addprefix $(OBJ_DIR), $(LIST_OBJ_B))
 
 # Compiler options
 CC 			:= cc
-FLAG 		:= -Wall -Wextra -Werror 
+FLAG 		:= #-Wall -Wextra -Werror 
 FLAG_LIB	:= -I ./Libft/headers -L ./Libft/libft.a
 NORM		:= norminette -R -CheckDefine
 
@@ -90,7 +90,7 @@ _WHITE		:=	\x1b[37m
 # 		RULES			#
 #########################
  
-all:		${NAME} checker
+all:		lib ${NAME} 
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEAD)
 			@mkdir -p $(@D)
@@ -99,10 +99,10 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEAD)
 
 $(NAME): 	 $(LIBX_DIR)$(LIBX) ${OBJ} $(HEAD)
 			@echo "$(_BOLD)$(_BLUE)compiling: $@$(_END)"
-			@${CC} -o ${NAME} ${OBJ} $(LIBX_DIR)${LIBX} $(FlAG_LIB) #-fsanitize=address -g3
+			@${CC} -o ${NAME} ${OBJ} $(LIBX_DIR)${LIBX} $(FlAG_LIB) -fsanitize=address -g3
 			@echo "$(_BOLD)$(_WHITE)$@ SUCCESSFULLY CREATED$(_END)"
 
-$(LIBX_DIR)$(LIBX) :
+lib:
 			@echo "$(_BOLD)$(_PURPLE) Compilation of $(LIBX) begin $(_END)"
 			@make -C $(LIBX_DIR)
 			@echo

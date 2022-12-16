@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:53:23 by jlitaudo          #+#    #+#             */
-/*   Updated: 2022/12/05 14:33:21 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:31:10 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_split(char const *s, char c)
 
 	tab_word = malloc(sizeof(char *) * (count_word((char *)s, c) + 1));
 	if (!tab_word || !s)
-		return (free_tab(tab_word));
+		return (ft_free_tab(tab_word));
 	nb_word = 0 ;
 	i = -1;
 	while (s[++i])
@@ -33,7 +33,7 @@ char	**ft_split(char const *s, char c)
 				j++;
 			tab_word[nb_word] = ft_strndup(&s[i], (size_t)j);
 			if (!(tab_word[nb_word++]))
-				return (free_tab(tab_word));
+				return (ft_free_tab(tab_word));
 			i += j - 1;
 		}
 	}

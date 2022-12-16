@@ -6,7 +6,7 @@
 #    By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/05 09:23:38 by jlitaudo          #+#    #+#              #
-#    Updated: 2022/12/13 09:45:36 by Teiki            ###   ########.fr        #
+#    Updated: 2022/12/15 19:43:23 by Teiki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ STR_SRC		:=	ft_calloc.c\
 				ft_split.c\
 				ft_count_word.c\
 				ft_free_tab.c\
-				size_tab.c\
+				ft_size_tab.c\
 				ft_atoi.c\
 				ft_strchr.c\
 				ft_striteri.c\
@@ -86,6 +86,8 @@ STR_SRC		:=	ft_calloc.c\
                 ft_strdup.c\
 				ft_strndup.c\
                 ft_strjoin.c\
+				ft_strjoin_free_s2.c\
+				ft_strjoin_free_s1.c\
 				ft_strnjoin.c\
                 ft_strlcpy.c\
                 ft_strmapi.c\
@@ -143,7 +145,7 @@ NORM		:= norminette -R -CheckDefine
 # 		RULES			#
 #########################
 
-all:			${NAME}
+all:			${NAME} 
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c $(HEAD)
 				@mkdir -p $(@D)

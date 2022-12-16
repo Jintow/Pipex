@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chain_list_functions2.c                            :+:      :+:    :+:   */
+/*   size_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 09:01:12 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/13 11:38:03 by Teiki            ###   ########.fr       */
+/*   Created: 2022/12/05 15:12:08 by jlitaudo          #+#    #+#             */
+/*   Updated: 2022/12/15 18:45:50 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_lstdelone_loc(t_listi *lst)
+size_t	ft_size_tab(char **tab)
 {
-	if (!lst)
-		return ;
-	free(lst);
-}
+	size_t	i;
 
-void	ft_lstclear_loc(t_listi **lst)
-{
-	t_listi	*p_lst;
-	t_listi	*p_del_lst;
-
-	if (!lst)
-		return ;
-	p_lst = *lst;
-	while (p_lst)
-	{
-		p_del_lst = p_lst;
-		p_lst = p_lst->next;
-		p_del_lst->next = NULL;
-		ft_lstdelone_loc(p_del_lst);
-	}
-	*lst = NULL;
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }

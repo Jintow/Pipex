@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:02:39 by jlitaudo          #+#    #+#             */
-/*   Updated: 2022/12/13 10:16:14 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/16 21:10:58 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,15 @@ char	*ft_itoa(int nb);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strnstr(const char *str, const char *to_find, size_t len);
+char	*ft_strjoin_free_s2(char *s1, char *s2);
+char	*ft_strjoin_free_s1(char *s1, char *s2);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strnjoin(char *s1, char *s2, size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	**ft_split(char const *s, char c);
-char	**free_tab(char **tab);
+char	**ft_free_tab(char **tab);
 void	*ft_memset(void *s, int c, size_t len);
 void	*ft_memcpy(void *dest, const void *src, size_t len);
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -79,7 +81,7 @@ t_list	*ft_lstnew(void *content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 size_t	ft_lstsize(t_list *lst);
 size_t	ft_strlen(const char *str);
-size_t	size_tab(void **tab);
+size_t	ft_size_tab(char **tab);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 int		*ft_intdup(const int *src, size_t size);
