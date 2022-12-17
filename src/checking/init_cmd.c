@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 19:41:33 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/17 15:22:31 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/17 18:20:45 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void	make_cmd_path(t_pipe *pipex);
 
 void	init_cmd(t_pipe *pipex, int argc, char **argv)
 {
-	if (ft_strcmp(argv[1], "here_doc") == 0)
-		return ;
+	if (ft_strcmp(argv[1], "here_doc") == 0 && argc == 6)
+	{
+		pipex->limiter = argv[2];
+	}
 	else
 		make_tab_cmd(pipex, &argv[1], argc - 2);
 }
@@ -57,8 +59,8 @@ void	make_cmd_path(t_pipe *pipex)
 		{
 			id_err = find_path(&pipex->tab_cmd[i][0], pipex->env);
 			if (id_err == 0)
-				error_exit(pipex, ERR_CMD);
-			else if (id_err == -1)
+				error_exit2(pipex, i);
+			if (id_err == -1)
 				error_exit(pipex, ERR_MALLOC);
 		}
 		i++;

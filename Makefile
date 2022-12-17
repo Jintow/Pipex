@@ -6,7 +6,7 @@
 #    By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 13:00:31 by jlitaudo          #+#    #+#              #
-#    Updated: 2022/12/17 15:25:09 by Teiki            ###   ########.fr        #
+#    Updated: 2022/12/17 17:51:44 by Teiki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ OBJ_BONUS	:= $(addprefix $(OBJ_DIR), $(LIST_OBJ_B))
 
 # Compiler options
 CC 			:= cc
-FLAG 		:= #-Wall -Wextra -Werror 
+FLAG 		:= -Wall -Wextra -Werror 
 FLAG_LIB	:= -I ./Libft/headers -L ./Libft/libft.a
 NORM		:= norminette -R -CheckDefine
 
@@ -111,8 +111,6 @@ checker:	$(LIBX_DIR)$(LIBX) $(OBJ_BONUS) $(HEAD)
 
 norm:		$(NORM) $(SRC)
 
-push:		$(NAME)
-			@./$(NAME) 0 5 454 2135 1235 45578 4523
 clean:
 			@make clean -C $(LIBX_DIR)
 			@rm -rf ${OBJ_DIR}
@@ -122,14 +120,10 @@ fclean: 	clean
 			@rm -f ${NAME}
 			@echo "$(_RED)$(_BOLD)$(NAME) deleted$(_END)"
 
-fcleanb:	clean
-			@rm -f checker
-			@echo "$(_RED)$(_BOLD)$(NAME) deleted$(_END)"
-
 fcleanall:	clean
 			@make fclean -C $(LIBX_DIR)
 			@echo
-			@rm -f ${NAME} checker
+			@rm -f ${NAME}
 			@echo "$(_RED)$(_BOLD)$(NAME) deleted$(_END)"
 
 re: 		fclean $(NAME)

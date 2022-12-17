@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 12:05:11 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/17 15:24:30 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/17 18:23:23 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define ERR_INPUT "Error opening input file"
 # define ERR_OUTPUT "Error opening output file"
 # define ERR_MALLOC "Error with malloc"
-# define ERR_CMD "Error with command"
+# define ERR_CMD "Error :command not found: "
 # define ERR_PIPE "Error with pipe"
 # define ERR_FORK "Error while forking"
 # define ERR_DUP "Error while executind dup"
@@ -41,6 +41,7 @@ typedef struct s_pipe
 	int		pipe_current[2];
 	char	***tab_cmd;
 	char	**env;
+	char	*limiter;
 }t_pipe;
 
 void	init_information(t_pipe *pipex, int argc, char **argv, char **env);
@@ -48,6 +49,7 @@ void	init_cmd(t_pipe *pipex, int argc, char **argv);
 void	pipe_and_exec(t_pipe *pipex);
 void	read_and_write_result(t_pipe *pipex);
 void	error_exit(t_pipe *pipex, char *err_msg);
+void	error_exit2(t_pipe *pipex, int i);
 void	gate_away(t_pipe *pipex);
 
 #endif

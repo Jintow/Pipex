@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 19:00:51 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/17 15:26:45 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/17 17:54:04 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	close_and_save(t_pipe *pipex, int *pipe_current, int *pipe_prev)
 	}
 	ft_bzero(pipex->pipe_current, sizeof(int));
 	ft_memcpy(pipex->pipe_current, pipe_current, 2);
-	dprintf(2, "%d\n", pipex->pipe_current[0]);
 	if (close(pipe_current[1]) == -1)
 		error_exit(pipex, ERR_CLOS_PIP);
 }
@@ -91,7 +90,6 @@ void	exec_next_cmd(t_pipe *pipex, char **cmd, int *pipe_prev)
 	{
 		if (dup2(pipe_prev[0], STDIN_FILENO) == -1)
 			error_exit(pipex, ERR_DUP);
-		dprintf(2, "%d\n", pipe_prev[0]);
 		if (dup2(pipe_current[1], STDOUT_FILENO) == -1)
 			error_exit(pipex, ERR_DUP);
 		if (close(pipe_current[0]) == -1)
