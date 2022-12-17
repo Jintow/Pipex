@@ -6,7 +6,7 @@
 #    By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 13:00:31 by jlitaudo          #+#    #+#              #
-#    Updated: 2022/12/16 20:42:31 by Teiki            ###   ########.fr        #
+#    Updated: 2022/12/17 13:04:18 by Teiki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,7 @@ LIST_HEAD	:=	pipex.h
 
 HEAD		:= $(addprefix $(HEAD_DIR), $(LIST_HEAD))
 
-LIST_SORT	:=	
-
-SORT_DIR	:=	sorting/
-SORTING		:=	$(addprefix $(SORT_DIR), $(LIST_SORT))
-
-LIST_TOOLS	:=	
+LIST_TOOLS	:=	pipe_and_exec.c\
 
 TOOLS_DIR	:=	tools/
 TOOLS		:=	$(addprefix $(TOOLS_DIR), $(LIST_TOOLS))
@@ -46,12 +41,10 @@ BONUS		:= $(addprefix $(BONUS_DIR), $(LIST_BONUS))
 LIST_SRC	:=	main.c\
 				$(CHECKING)\
 				$(TOOLS)\
-				$(SORTING)\
 
 LIST_SRC_B	:=	$(BONUS)\
 				$(CHECKING)\
 				$(TOOLS)\
-				$(SORTING)\
 
 SRC_DIR		:=	src/
 SRC			:=	$(addprefix $(SRC_DIR), $(LIST_SRC))

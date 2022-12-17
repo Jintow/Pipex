@@ -6,7 +6,7 @@
 #    By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/05 09:23:38 by jlitaudo          #+#    #+#              #
-#    Updated: 2022/12/15 19:43:23 by Teiki            ###   ########.fr        #
+#    Updated: 2022/12/17 13:07:05 by Teiki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,7 @@ STR_SRC		:=	ft_calloc.c\
 				ft_split.c\
 				ft_count_word.c\
 				ft_free_tab.c\
+				ft_free_tab3.c\
 				ft_size_tab.c\
 				ft_atoi.c\
 				ft_strchr.c\

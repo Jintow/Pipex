@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 19:41:33 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/16 21:11:46 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/17 10:40:35 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	error_exit(t_pipe *pipex, char *err_msg)
 	perror(err_msg);
 	exit(EXIT_FAILURE);
 }
-
 
 void	make_tab_cmd(t_pipe *pipex, char **str, int size)
 {

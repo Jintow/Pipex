@@ -1,14 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe_and_exec.c                                    :+:      :+:    :+:   */
+/*   ft_free_tab3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 19:00:51 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/15 19:01:01 by Teiki            ###   ########.fr       */
+/*   Created: 2022/12/17 10:29:01 by Teiki             #+#    #+#             */
+/*   Updated: 2022/12/17 10:29:22 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
+char	***ft_free_tab3(char ***tab)
+{
+	int	i;
+
+	if (!tab)
+		return (NULL);
+	i = 0;
+	while (tab[i])
+		ft_free_tab(tab[i++]);
+	free(tab);
+	return (NULL);
+}

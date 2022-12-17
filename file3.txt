@@ -1,0 +1,29 @@
+      22
+       2
+       2
+       2
+
+#    By: Taiki <Teiki@student.42.fr>                +#+  +:+       +#+         #
+#    Updatad: 2022/12/17 13:04:18 by Teiki            ###   ########.fr        #
+#    By: Taiki <Teiki@student.42.fr>                +#+  +:+       +#+         #
+#    Updatad: 2022/12/17 13:04:18 by Teiki            ###   ########.fr        #
+#    By: Taiki <Teiki@student.40.fr>                +#+  +:+       +#+         #
+#    Updatad: 0022/12/17 13:04:18 by Teiki            ###   ########.fr        #
+#    By: Taiki <Teiki@student.40.fr>                +#+  +:+       +#+         #
+#    Updatad: 0000/10/17 13:04:18 by Teiki            ###   ########.fr        #
+#    By: T0iki <Teiki@student.40.fr>                +#+  +:+       +#+         #
+#    Upd0t0d: 0000/10/17 13:04:18 by Teiki            ###   ########.fr        #
+#    By: Tcoucouiki <Teiki@student.4coucou.fr>                +#+  +:+       +#+         #
+#    Updcoucoutcoucoud: coucoucoucoucoucoucoucou/1coucou/17 13:coucou4:18 by Teiki            ###   ########.fr        #
+#    By: Tcoucouiki <Teiki@student.4coucou.fr>                +#+  +:+       +#+         #
+#    Updcoucoutcoucoud: coucoucoucoucoucoucoucou/1coucou/17 13:coucou4:18 by Teiki            ###   ########.fr        #
+#    By: TBESTiki <Teiki@student.4BEST.fr>                +#+  +:+       +#+         #
+#    UpdBESTtBESTd: BESTBESTBESTBEST/1BEST/17 13:BEST4:18 by Teiki            ###   ########.fr        #
+#    By: TBESTiki <Teiki@student.4BEST.fr>                +#+  +:+       +#+         #
+#    UpdBESTtBESTd: BESTBESTBESTBEST/1BEST/17 13:BEST4:18 by Teiki            ###   ########.fr        #
+#    By: TBESTiki <Teiki@student.4BEST.fr>                +#+  +:+       +#+         #
+#    UpdBESTtBESTd: BESTBESTBESTBEST/1BEST/17 13:BEST4:18 by Teiki            ###   ########.fr        #
+#    By: THOLAiki <Teiki@student.4HOLA.fr>                +#+  +:+       +#+         #
+#    UpdHOLAtHOLAd: HOLAHOLAHOLAHOLA/1HOLA/17 13:HOLA4:18 by Teiki            ###   ########.fr        #
+#    By: THOLAiki <Teiki@student.4HOLA.fr>                +#+  +:+       +#+         #
+#    UpdHOLAtHOLAd: HOLAHOLAHOLAHOLA/1HOLA/17 13:HOLA4:18 by Teiki            ###   ########.fr        #

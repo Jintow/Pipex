@@ -6,31 +6,27 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:56:57 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/16 21:10:27 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/17 13:06:22 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	***ft_free_tab3(char ***tab);
-char	***make_tab_cmd(char **str, int size);
-
 int	main(int argc, char **argv, char **env)
 {
 	char	*path_f2;
-	char	***tab_cmd;
 	int		size_tab;
 	int		i;
 	t_pipe	pipex;
 
-	pipex.pid = 0;
 	if (argc < 4)
 		return (0);
 	init_information(&pipex, argc, argv, env);
 	i = 0;
-	while (pipex.env[i])
-		ft_printf("%s\n", pipex.env[i++]);
 	init_cmd(&pipex, argc - 1, &argv[1]);
+	while (pipex.tab_cmd[i])
+		ft_printf("%s\n", pipex.tab_cmd[i++][0]);
+	pipe_and_exec(&pipex);
 	return (0);
 }	
 	// fd = open(path_f2, O_WRONLY);
@@ -72,22 +68,6 @@ int	main(int argc, char **argv, char **env)
 
 	// 	}
 	// }
-
-
-
-
-char	***ft_free_tab3(char ***tab)
-{
-	int	i;
-
-	if (!tab)
-		return (NULL);
-	i = 0;
-	while (tab[i])
-		ft_free_tab(tab[i++]);
-	free(tab);
-	return (NULL);
-}
 
 //   char *new_argv[] = { "ls", "-l", NULL };
 //   char *new_envp[] = { "PATH=/usr/local/bin:/usr/bin:/bin", NULL };

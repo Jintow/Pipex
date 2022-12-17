@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:02:39 by jlitaudo          #+#    #+#             */
-/*   Updated: 2022/12/16 21:10:58 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/17 10:29:47 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	**ft_split(char const *s, char c);
 char	**ft_free_tab(char **tab);
+char	***ft_free_tab3(char ***tab);
 void	*ft_memset(void *s, int c, size_t len);
 void	*ft_memcpy(void *dest, const void *src, size_t len);
 void	*ft_memchr(const void *s, int c, size_t n);
