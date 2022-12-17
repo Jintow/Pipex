@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:28:53 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/16 22:06:40 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/18 00:01:30 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	get_in_out_put(t_pipe *pipex, int argc, char **argv)
 		perror(ERR_INPUT);
 		exit(EXIT_FAILURE);
 	}
-	pipex->fd_output = open(argv[argc -1], O_WRONLY | O_CREAT \
-		| O_APPEND, 0000644);
+	pipex->fd_output = open(argv[argc -1], O_WRONLY | O_TRUNC | \
+		O_CREAT, 0000644);
 	if (pipex->fd_output < 0)
 	{
 		perror(ERR_OUTPUT);

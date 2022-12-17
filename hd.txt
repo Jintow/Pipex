@@ -1,6 +1,0 @@
-salut
-cest cooll
-de tester des commandes ici
-je me demande si EOF
-sera valide
-super

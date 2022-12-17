@@ -6,7 +6,7 @@
 #    By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 13:00:31 by jlitaudo          #+#    #+#              #
-#    Updated: 2022/12/17 17:51:44 by Teiki            ###   ########.fr        #
+#    Updated: 2022/12/18 00:09:49 by Teiki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,7 +112,6 @@ checker:	$(LIBX_DIR)$(LIBX) $(OBJ_BONUS) $(HEAD)
 norm:		$(NORM) $(SRC)
 
 clean:
-			@make clean -C $(LIBX_DIR)
 			@rm -rf ${OBJ_DIR}
 			@echo "$(_RED)directory $(OBJ_DIR) deleted$(_END)"
 
