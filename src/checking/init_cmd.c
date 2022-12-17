@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 19:41:33 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/17 10:40:35 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/17 15:22:31 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@ void	init_cmd(t_pipe *pipex, int argc, char **argv)
 		return ;
 	else
 		make_tab_cmd(pipex, &argv[1], argc - 2);
-}
-
-void	error_exit(t_pipe *pipex, char *err_msg)
-{
-	ft_free_tab(pipex->env);
-	ft_free_tab3(pipex->tab_cmd);
-	perror(err_msg);
-	exit(EXIT_FAILURE);
 }
 
 void	make_tab_cmd(t_pipe *pipex, char **str, int size)

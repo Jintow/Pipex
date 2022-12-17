@@ -6,7 +6,7 @@
 #    By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 13:00:31 by jlitaudo          #+#    #+#              #
-#    Updated: 2022/12/17 13:04:18 by Teiki            ###   ########.fr        #
+#    Updated: 2022/12/17 15:25:09 by Teiki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ LIST_HEAD	:=	pipex.h
 HEAD		:= $(addprefix $(HEAD_DIR), $(LIST_HEAD))
 
 LIST_TOOLS	:=	pipe_and_exec.c\
+				read_and_write.c\
+				error_and_exit.c\
 
 TOOLS_DIR	:=	tools/
 TOOLS		:=	$(addprefix $(TOOLS_DIR), $(LIST_TOOLS))

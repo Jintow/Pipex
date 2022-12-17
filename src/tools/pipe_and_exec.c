@@ -6,13 +6,12 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 19:00:51 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/17 14:03:53 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/17 15:26:45 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	read_and_write_result(t_pipe *pipex);
 void	exec_first_cmd(t_pipe *pipex);
 void	close_and_save(t_pipe *pipex, int *pipe_current, int *pipe_prev);
 void	exec_next_cmd(t_pipe *pipex, char **cmd, int *pipe_prev);
@@ -104,18 +103,4 @@ void	exec_next_cmd(t_pipe *pipex, char **cmd, int *pipe_prev)
 	}
 	wait(NULL);
 	close_and_save(pipex, pipe_current, pipe_prev);
-}
-
-void	read_and_write_result(t_pipe *pipex)
-{
-	char	buffer[1000000];
-	int		size;
-
-	size = 0;
-	while (read(pipex->pipe_current[0], &buffer[size], 1))
-		size++;
-	if (write(pipex->fd_output, buffer, ft_strlen(buffer)) == -1)
-		error_exit(pipex, ERR_WRITE);
-	if (close(pipex->fd_output) == -1)
-		error_exit(pipex, ERR_CLOSE);
 }
