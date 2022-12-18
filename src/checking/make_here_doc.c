@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 10:38:32 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/18 12:51:39 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/18 19:23:40 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	make_here_doc(t_pipe *pipex)
 	{
 		ft_printf("pipe heredoc> ");
 		line = get_next_line(STDIN_FILENO, pipex);
+		if ((ft_strncmp(line, pipex->limiter, ft_strlen(line) - 1) == 0 && \
+			line[0] != '\n') || !(ft_strlen(line)))
+			break;
 		pipex->here_doc = ft_strjoin_free_s1(pipex->here_doc, line);
 		if (!(pipex->here_doc))
 			error_exit(pipex, ERR_MALLOC);
-		if (ft_strncmp(line, pipex->limiter, ft_strlen(line) - 1) == 0 \
-			|| !(ft_strlen(line)))
-			break;
 		free(line);
 	}
 	free(line);
