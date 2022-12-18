@@ -6,18 +6,30 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:28:53 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/18 00:01:30 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/18 12:58:18 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 void	get_in_out_put(t_pipe *pipex, int argc, char **argv);
+void	get_output_here_doc(t_pipe *pipex, char *output);
 void	get_path(t_pipe *pipex, char **env);
 
 void	init_information(t_pipe *pipex, int argc, char **argv, char **env)
 {
-	get_in_out_put(pipex, argc, argv);
+	if (ft_strcmp(argv[1], "here_doc") == 0)
+	{
+		if (argc < 6)
+			error_exit3(pipex, ERR_USER_HERE_DOC);
+		if (!argv[2][0])
+			error_exit3(pipex, ERR_LIMITER);
+		pipex->limiter = argv[2];
+		make_here_doc(pipex);
+		get_output_here_doc(pipex, argv[argc - 1]);
+	}
+	else
+		get_in_out_put(pipex, argc, argv);
 	get_path(pipex, env);
 }
 
@@ -55,6 +67,17 @@ void	get_path(t_pipe *pipex, char **env)
 	if (!(pipex->env))
 	{
 		perror(ERR_MALLOC);
+		exit(EXIT_FAILURE);
+	}
+}
+
+void	get_output_here_doc(t_pipe *pipex, char *output)
+{
+	pipex->fd_output = open((output), O_WRONLY | O_TRUNC | \
+		O_CREAT, 0000644);
+	if (pipex->fd_output < 0)
+	{
+		perror(ERR_OUTPUT);
 		exit(EXIT_FAILURE);
 	}
 }

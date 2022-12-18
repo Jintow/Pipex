@@ -6,7 +6,7 @@
 #    By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 13:00:31 by jlitaudo          #+#    #+#              #
-#    Updated: 2022/12/18 00:09:49 by Teiki            ###   ########.fr        #
+#    Updated: 2022/12/18 11:27:31 by Teiki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ TOOLS_DIR	:=	tools/
 TOOLS		:=	$(addprefix $(TOOLS_DIR), $(LIST_TOOLS))
 
 LIST_CHECK	:=	init_fd_files.c\
+				make_here_doc.c\
 				init_cmd.c\
 
 CHECK_DIR	:=	checking/
@@ -94,20 +95,13 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEAD)
 
 $(NAME): 	 $(LIBX_DIR)$(LIBX) ${OBJ} $(HEAD)
 			@echo "$(_BOLD)$(_BLUE)compiling: $@$(_END)"
-			@${CC} -o ${NAME} ${OBJ} $(LIBX_DIR)${LIBX} $(FlAG_LIB) -fsanitize=address -g3
+			@${CC} -o ${NAME} ${OBJ} $(LIBX_DIR)${LIBX} $(FlAG_LIB) #-fsanitize=address -g3
 			@echo "$(_BOLD)$(_WHITE)$@ SUCCESSFULLY CREATED$(_END)"
 
 lib:
-			@echo "$(_BOLD)$(_PURPLE) Compilation of $(LIBX) begin $(_END)"
+			@echo "$(_BOLD)$(_PURPLE) Compilation of $(LIBX) begins $(_END)"
 			@make -C $(LIBX_DIR)
 			@echo
-
-bonus:		checker
-
-checker:	$(LIBX_DIR)$(LIBX) $(OBJ_BONUS) $(HEAD)
-			@echo "$(_BOLD)$(_BLUE)compiling: $@$(_END)"
-			@${CC} -o checker ${OBJ_BONUS} $(LIBX_DIR)${LIBX} $(FlAG_LIB) #-fsanitize=address -g3
-			@echo "$(_BOLD)$(_WHITE)$@ SUCCESSFULLY CREATED$(_END)"
 
 norm:		$(NORM) $(SRC)
 
