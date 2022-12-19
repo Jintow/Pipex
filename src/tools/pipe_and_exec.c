@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_and_exec.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 19:00:51 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/17 17:54:04 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/19 15:44:07 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,18 @@ void	pipe_and_exec(t_pipe *pipex)
 	char	***tab_cmd;
 
 	exec_first_cmd(pipex);
-	if (close(pipex->fd_input) == -1)
+	if (pipex->fd_input != -1 && close(pipex->fd_input) == -1)
 		error_exit(pipex, ERR_CLOSE);
 	tab_cmd = &pipex->tab_cmd[1];
 	i = 0;
 	while (tab_cmd[i])
 	{
-		exec_next_cmd(pipex, tab_cmd[i], pipex->pipe_current);
+		if (i == 0 && pipex->fd_input == -1)
+			continue ;
+		else if (!tab_cmd[i + 1] && pipex->fd_output == -1)
+			break ;
+		else
+			exec_next_cmd(pipex, tab_cmd[i], pipex->pipe_current);
 		i++;
 	}
 	read_and_write_result(pipex);
@@ -48,7 +53,7 @@ void	exec_first_cmd(t_pipe *pipex)
 		error_exit(pipex, ERR_FORK);
 	if (pid == 0)
 	{
-		if (dup2(pipex->fd_input, STDIN_FILENO) == -1)
+		if (pipex->fd_input != -1 && dup2(pipex->fd_input, STDIN_FILENO) == -1)
 			error_exit(pipex, ERR_DUP);
 		if (dup2(pipe_current[1], STDOUT_FILENO) == -1)
 			error_exit(pipex, ERR_DUP);

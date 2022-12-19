@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 12:05:11 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/18 12:56:38 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/19 08:35:09 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include <errno.h>
 # include <sys/wait.h>
 # include <stdio.h>
 # include <fcntl.h>
@@ -26,8 +25,10 @@ following this pattern:\n\t [input file] [cmd1] [cmd2] ... [cmdn] [output file]\
 using the here_doc. It must follow this pattern:\n\t \
 [here_doc] [limiter] [cmd1] [cmd2] ... [cmdn] [output file]\n"
 # define ERR_STDIN "Error reading standard input\n"
-# define ERR_LIMITER "Error : You must specify a non empty string limiter for an here_doc use of pipex\n"
-# define ERR_HERE_DOC "\nError : You must specify your limiter at the end of the input\n"
+# define ERR_LIMITER "Error : You must specify a non empty string \
+limiter for an here_doc use of pipex\n"
+# define ERR_HERE_DOC "\nError : You must specify your limiter \
+at the end of the input\n"
 # define ERR_HERE_DOC2 "Error while processing heredoc.txt temporary file"
 # define ERR_UNLINK "Error while unlink /tmp/heredoc.txt file"
 # define ERR_INPUT "Error opening input file"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_fd_files.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:28:53 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/18 12:58:18 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/19 15:44:27 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,21 @@ void	init_information(t_pipe *pipex, int argc, char **argv, char **env)
 
 void	get_in_out_put(t_pipe *pipex, int argc, char **argv)
 {
+	char *
+	
 	pipex->fd_input = open(argv[1], O_RDONLY);
 	if (pipex->fd_input < 0)
 	{
+		
 		perror(ERR_INPUT);
-		exit(EXIT_FAILURE);
+		ft_dprintf(2, "\t%s\n", argv[1]);
 	}
 	pipex->fd_output = open(argv[argc -1], O_WRONLY | O_TRUNC | \
 		O_CREAT, 0000644);
 	if (pipex->fd_output < 0)
 	{
 		perror(ERR_OUTPUT);
-		exit(EXIT_FAILURE);
+		ft_dprintf(2, "\t%s\n", argv[argc - 1]);
 	}
 }
 

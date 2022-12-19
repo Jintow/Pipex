@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_and_exit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:22:07 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/18 12:31:05 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/19 15:35:10 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	error_exit(t_pipe *pipex, char *err_msg)
 void	error_exit2(t_pipe *pipex, int i)
 {
 	char	*err_msg;
-	
+
 	ft_free_tab(pipex->env);
 	err_msg = ft_strjoin(ERR_CMD, pipex->tab_cmd[i][0]);
 	err_msg = ft_strjoin_free_s1(err_msg, "\n");
