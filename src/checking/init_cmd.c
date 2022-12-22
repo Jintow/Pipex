@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 19:41:33 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/22 11:32:21 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/22 12:08:48 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	make_cmd_path(t_pipe *pipex)
 	{
 		if (access(pipex->tab_cmd[i][0], X_OK) != 0)
 		{
-			id_err = find_path(&pipex->tab_cmd[i][0], pipex->env);
+			id_err = find_path(&pipex->tab_cmd[i][0], pipex->cmd_path);
 			if (id_err == 0)
 				error_exit2(pipex, i);
 			if (id_err == -1)

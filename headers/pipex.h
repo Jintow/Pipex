@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 12:05:11 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/21 22:18:25 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/22 12:06:51 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_pipe
 	int		size;
 	char	***tab_cmd;
 	char	**env;
+	char	**cmd_path;
 	char	*limiter;
 	char	*here_doc;
 }t_pipe;

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:07:09 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/22 11:37:17 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/22 11:43:56 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ void	wait_all_pid(t_pipe *pipex)
 	int	status;
 
 	i = 0;
-	while (pipex->tab_pid[i])
+	while (i < pipex->size)
 		waitpid(pipex->tab_pid[i++], &status, 0);
 }

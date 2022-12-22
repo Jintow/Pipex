@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 19:00:51 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/22 10:51:20 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/22 12:17:34 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	exec_first_cmd(t_pipe *pipex, char **cmd)
 			error_exit(pipex, ERR_CLOS_PIP);
 		if (pipex->fd_input == -1)
 			free_and_exit(pipex);
-		if (execve(cmd[0], cmd, NULL) == -1)
+		if (execve(cmd[0], cmd, pipex->env) == -1)
 			error_exit(pipex, ERR_EXEC);
 	}
 	if (close(pipe_current[1]) == -1)
@@ -101,7 +101,7 @@ void	dup_close_exec(t_pipe *pipex, char **cmd, \
 		error_exit(pipex, ERR_CLOS_PIP);
 	if (close(pipe_current[1]) == -1)
 		error_exit(pipex, ERR_CLOS_PIP);
-	if (execve(cmd[0], cmd, NULL) == -1)
+	if (execve(cmd[0], cmd, pipex->env) == -1)
 		error_exit(pipex, ERR_EXEC);
 }
 

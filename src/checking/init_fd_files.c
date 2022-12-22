@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:28:53 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/22 11:12:45 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/22 12:07:41 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	init_information(t_pipe *pipex, int argc, char **argv, char **env)
 	else
 		get_in_out_put(pipex, argc, argv);
 	get_path(pipex, env);
+	pipex->env = env;
 }
 
 /*
@@ -81,8 +82,8 @@ void	get_path(t_pipe *pipex, char **env)
 			break ;
 		i++;
 	}
-	pipex->env = ft_split(&path[5], ':');
-	if (!(pipex->env))
+	pipex->cmd_path = ft_split(&path[5], ':');
+	if (!(pipex->cmd_path))
 	{
 		perror(ERR_MALLOC);
 		exit(EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:22:07 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/22 10:55:08 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/22 12:15:22 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void	error_exit(t_pipe *pipex, char *err_msg)
 {
-	ft_free_tab(pipex->env);
+	ft_free_tab(pipex->cmd_path);
 	if (pipex->tab_pid)
 		free(pipex->tab_pid);
 	ft_free_tab((char **)pipex->tab_pipe);
@@ -35,7 +35,7 @@ void	error_exit(t_pipe *pipex, char *err_msg)
 
 void	error_exit2(t_pipe *pipex, int i)
 {
-	ft_free_tab(pipex->env);
+	ft_free_tab(pipex->cmd_path);
 	if (pipex->tab_pid)
 		free(pipex->tab_pid);
 	ft_free_tab((char **)pipex->tab_pipe);
@@ -51,7 +51,7 @@ void	error_exit2(t_pipe *pipex, int i)
 
 void	error_exit3(t_pipe *pipex, char *err_msg)
 {
-	ft_free_tab(pipex->env);
+	ft_free_tab(pipex->cmd_path);
 	ft_free_tab3(pipex->tab_cmd);
 	if (pipex->tab_pid)
 		free(pipex->tab_pid);
@@ -70,7 +70,7 @@ void	gate_away(t_pipe *pipex)
 {
 	free(pipex->tab_pid);
 	ft_free_tab((char **)pipex->tab_pipe);
-	ft_free_tab(pipex->env);
+	ft_free_tab(pipex->cmd_path);
 	ft_free_tab3(pipex->tab_cmd);
 	exit(EXIT_SUCCESS);
 }
@@ -83,7 +83,7 @@ void	gate_away(t_pipe *pipex)
 
 void	free_and_exit(t_pipe *pipex)
 {
-	ft_free_tab(pipex->env);
+	ft_free_tab(pipex->cmd_path);
 	ft_free_tab3(pipex->tab_cmd);
 	free(pipex->tab_pid);
 	ft_free_tab((char **)pipex->tab_pipe);
