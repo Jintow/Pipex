@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 19:41:33 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/18 12:52:03 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/22 11:32:21 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,57 @@ int		find_path(char **cmd, char **env);
 void	make_tab_cmd(t_pipe *pipex, char **str, int size);
 void	make_cmd_path(t_pipe *pipex);
 
+/*
+	Function that call the make_tab_command depending 
+	on the initial inputs. If the output file descriptor 
+	is invalid, the last command won't be executed.
+*/
+
 void	init_cmd(t_pipe *pipex, int argc, char **argv)
 {
 	if (ft_strcmp(argv[0], "here_doc") == 0)
 		make_tab_cmd(pipex, &argv[2], argc - 3);
+	else if (pipex->fd_output == -1)
+		make_tab_cmd(pipex, &argv[1], argc - 3);
 	else
 		make_tab_cmd(pipex, &argv[1], argc - 2);
 }
 
+/*
+	Function that initiate arrays of command, pipes and pid
+	corresponding to each of the command input arguments.
+*/
+
 void	make_tab_cmd(t_pipe *pipex, char **str, int size)
 {
-	char	***tab_cmd;
 	int		i;
 
-	tab_cmd = malloc(sizeof(char **) * size + 1);
-	if (!tab_cmd)
+	pipex->tab_cmd = malloc(sizeof(char **) * (size + 1));
+	pipex->tab_pid = malloc(sizeof(int) * (size + 1));
+	pipex->tab_pipe = malloc(sizeof(int *) * (size + 1));
+	pipex->size = size;
+	if (!pipex->tab_cmd || !pipex->tab_pid || !pipex->tab_pipe)
 		error_exit(pipex, ERR_MALLOC);
 	i = 0;
 	while (i < size)
 	{
-		tab_cmd[i] = ft_split(str[i], ' ');
-		if (!tab_cmd[i])
+		pipex->tab_cmd[i] = ft_split(str[i], ' ');
+		pipex->tab_pipe[i] = calloc(2, sizeof(int));
+		if (!pipex->tab_cmd[i] || !pipex->tab_pipe[i])
 			error_exit(pipex, ERR_MALLOC);
 		i++;
 	}
-	tab_cmd[i] = NULL;
-	pipex->tab_cmd = tab_cmd;
+	pipex->tab_cmd[i] = NULL;
+	pipex->tab_pipe[i] = NULL;
+	pipex->tab_pid[i] = -10;
 	make_cmd_path(pipex);
 }
+
+/*
+	Function that check the access of each command input argument.
+	If access isn't valid, it will call the finding path function.
+	If there is no valid path in the environment, it will display an error.
+*/
 
 void	make_cmd_path(t_pipe *pipex)
 {
@@ -64,6 +87,10 @@ void	make_cmd_path(t_pipe *pipex)
 		i++;
 	}
 }
+
+/* 
+	Function that will try each possible path for command input argument.
+*/
 
 int	find_path(char **cmd, char **env)
 {

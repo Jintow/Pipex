@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 12:05:11 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/19 08:35:09 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2022/12/21 22:18:25 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 # include <sys/wait.h>
 # include <stdio.h>
+# include <string.h>
 # include <fcntl.h>
+# include <errno.h>
 # include "libft.h"
 # include "ft_printf.h"
 
@@ -48,7 +50,9 @@ typedef struct s_pipe
 {
 	int		fd_input;
 	int		fd_output;
-	int		pipe_current[2];
+	int		*tab_pid;
+	int		**tab_pipe;
+	int		size;
 	char	***tab_cmd;
 	char	**env;
 	char	*limiter;
@@ -63,6 +67,7 @@ void	read_and_write_result(t_pipe *pipex);
 void	error_exit(t_pipe *pipex, char *err_msg);
 void	error_exit2(t_pipe *pipex, int i);
 void	error_exit3(t_pipe *pipex, char *err_msg);
+void	free_and_exit(t_pipe *pipex);
 void	gate_away(t_pipe *pipex);
 
 #endif

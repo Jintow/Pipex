@@ -6,14 +6,19 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 10:38:32 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/18 19:23:40 by Teiki            ###   ########.fr       */
+/*   Updated: 2022/12/22 11:36:35 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "pipex.h"
+#include "pipex.h"
 
 char	*get_next_line(int fd, t_pipe *pipex);
 void	make_here_doc_tmp_file(t_pipe *pipex);
+
+/*
+	Function that will read the standard input for here_doc option.
+	If at the end the limiter wasn't given it will display an error.
+*/
 
 void	make_here_doc(t_pipe *pipex)
 {
@@ -30,7 +35,7 @@ void	make_here_doc(t_pipe *pipex)
 		line = get_next_line(STDIN_FILENO, pipex);
 		if ((ft_strncmp(line, pipex->limiter, ft_strlen(line) - 1) == 0 && \
 			line[0] != '\n') || !(ft_strlen(line)))
-			break;
+			break ;
 		pipex->here_doc = ft_strjoin_free_s1(pipex->here_doc, line);
 		if (!(pipex->here_doc))
 			error_exit(pipex, ERR_MALLOC);
@@ -42,10 +47,14 @@ void	make_here_doc(t_pipe *pipex)
 	make_here_doc_tmp_file(pipex);
 }
 
+/*
+	Function that will get each line read in the standard input.
+*/
+
 char	*get_next_line(int fd, t_pipe *pipex)
 {
 	char	buffer[1001];
-	char 	*line;
+	char	*line;
 
 	ft_bzero(buffer, 1001);
 	line = ft_calloc(1, sizeof(char));
@@ -65,6 +74,11 @@ char	*get_next_line(int fd, t_pipe *pipex)
 		error_exit(pipex, ERR_MALLOC);
 	return (line);
 }
+
+/*
+	Function that will create a temporary here_doc file to put in the 
+	lines previsouly read in the standard input.
+*/
 
 void	make_here_doc_tmp_file(t_pipe *pipex)
 {
