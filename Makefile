@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+         #
+#    By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 13:00:31 by jlitaudo          #+#    #+#              #
-#    Updated: 2022/12/18 19:10:15 by Teiki            ###   ########.fr        #
+#    Updated: 2023/01/09 14:57:15 by jlitaudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@
 
 # Folders and names
 NAME		:= pipex
+NAME_B		:= pipex_bonus
 
 HEAD_DIR	:=	headers/
 LIST_HEAD	:=	pipex.h
@@ -36,7 +37,7 @@ LIST_CHECK	:=	init_fd_files.c\
 CHECK_DIR	:=	checking/
 CHECKING	:=	$(addprefix $(CHECK_DIR), $(LIST_CHECK))
 
-LIST_BONUS	:=	
+LIST_BONUS	:=	main_bonus.c\
 
 BONUS_DIR	:= bonus/
 BONUS		:= $(addprefix $(BONUS_DIR), $(LIST_BONUS))
@@ -86,17 +87,22 @@ _WHITE		:=	\x1b[37m
 # 		RULES			#
 #########################
  
-all:		lib ${NAME} 
+all:		lib ${NAME} $(NAME_B)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEAD)
 			@mkdir -p $(@D)
 			@echo "$(_GREEN)compiling: $<$(_END)"
 			@${CC} ${FLAG} -I $(HEAD_DIR) -I ./Libft/headers -c $< -o $@
 
-$(NAME): 	 $(LIBX_DIR)$(LIBX) ${OBJ} $(HEAD)
+$(NAME): 	$(LIBX_DIR)$(LIBX) ${OBJ} $(HEAD)
 			@echo "$(_BOLD)$(_BLUE)compiling: $@$(_END)"
 			@${CC} -o ${NAME} ${OBJ} $(LIBX_DIR)${LIBX} $(FlAG_LIB) #-fsanitize=leaks
 			@echo "$(_BOLD)$(_WHITE)$@ SUCCESSFULLY CREATED$(_END)"
+
+$(NAME_B):	$(LIBX_DIR)$(LIBX) ${OBJ_BONUS} $(HEAD)
+			@echo "$(_BOLD)$(_BLUE)compiling: $@$(_END)"
+			@${CC} -o ${NAME_B} ${OBJ_BONUS} $(LIBX_DIR)${LIBX} $(FlAG_LIB) #-fsanitize=leaks
+			@echo "$(_BOLD)$(_WHITE)$(NAME_B) SUCCESSFULLY CREATED$(_END)"
 
 lib:
 			@echo "$(_BOLD)$(_PURPLE) Compilation of $(LIBX) begins $(_END)"

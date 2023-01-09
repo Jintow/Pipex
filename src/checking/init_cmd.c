@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 19:41:33 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/22 12:08:48 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/09 17:29:47 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ void	make_cmd_path(t_pipe *pipex);
 	on the initial inputs. If the output file descriptor 
 	is invalid, the last command won't be executed.
 */
-
 void	init_cmd(t_pipe *pipex, int argc, char **argv)
 {
-	if (ft_strcmp(argv[0], "here_doc") == 0)
+	if (argc >= 6 && ft_strcmp(argv[0], "here_doc") == 0)
+	{	
 		make_tab_cmd(pipex, &argv[2], argc - 3);
+	}
 	else if (pipex->fd_output == -1)
 		make_tab_cmd(pipex, &argv[1], argc - 3);
 	else
@@ -36,7 +37,6 @@ void	init_cmd(t_pipe *pipex, int argc, char **argv)
 	Function that initiate arrays of command, pipes and pid
 	corresponding to each of the command input arguments.
 */
-
 void	make_tab_cmd(t_pipe *pipex, char **str, int size)
 {
 	int		i;
@@ -67,7 +67,6 @@ void	make_tab_cmd(t_pipe *pipex, char **str, int size)
 	If access isn't valid, it will call the finding path function.
 	If there is no valid path in the environment, it will display an error.
 */
-
 void	make_cmd_path(t_pipe *pipex)
 {
 	int	i;
@@ -91,7 +90,6 @@ void	make_cmd_path(t_pipe *pipex)
 /* 
 	Function that will try each possible path for command input argument.
 */
-
 int	find_path(char **cmd, char **env)
 {
 	int		i;

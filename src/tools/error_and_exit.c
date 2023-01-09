@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_and_exit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:22:07 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/22 12:15:22 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/09 17:33:01 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /*
 	General error function for the most common cases.
 */
-
 void	error_exit(t_pipe *pipex, char *err_msg)
 {
 	ft_free_tab(pipex->cmd_path);
@@ -32,7 +31,6 @@ void	error_exit(t_pipe *pipex, char *err_msg)
 /*
 	Error function for command not found.
 */
-
 void	error_exit2(t_pipe *pipex, int i)
 {
 	ft_free_tab(pipex->cmd_path);
@@ -48,7 +46,6 @@ void	error_exit2(t_pipe *pipex, int i)
 	Error function for unconvenient input parameters such as
 	too few arguments or NULL here_doc limiter.
 */
-
 void	error_exit3(t_pipe *pipex, char *err_msg)
 {
 	ft_free_tab(pipex->cmd_path);
@@ -65,7 +62,6 @@ void	error_exit3(t_pipe *pipex, char *err_msg)
 /*
 	Exit function for program success.
 */
-
 void	gate_away(t_pipe *pipex)
 {
 	free(pipex->tab_pid);
@@ -80,7 +76,6 @@ void	gate_away(t_pipe *pipex)
 	of invalid input file descriptor to allow the first command to exit 
 	without displaying any additionnal error message.
 */
-
 void	free_and_exit(t_pipe *pipex)
 {
 	ft_free_tab(pipex->cmd_path);

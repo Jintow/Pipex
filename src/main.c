@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:56:57 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/18 10:24:49 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/09 14:41:11 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv, char **env)
 {
 	t_pipe	pipex;
 
-	if (argc < 5)
+	if (argc != 5)
 	{
 		ft_dprintf(2, ERR_USER);
 		return (1);

@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_tab3.c                                     :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/17 10:29:01 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/09 15:58:47 by jlitaudo         ###   ########.fr       */
+/*   Created: 2022/12/15 17:56:57 by Teiki             #+#    #+#             */
+/*   Updated: 2023/01/09 15:30:01 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
 
-char	***ft_free_tab3(char ***tab)
+int	main(int argc, char **argv, char **env)
 {
-	int	i;
+	t_pipe	pipex;
 
-	if (!tab)
-		return (NULL);
-	i = 0;
-	while (tab[i])
-		ft_free_tab(tab[i++]);
-	free(tab);
-	return (NULL);
-}
+	if (argc < 5)
+	{
+		ft_dprintf(2, ERR_USER_BONUS);
+		return (1);
+	}
+	init_information(&pipex, argc, argv, env);
+	init_cmd(&pipex, argc - 1, &argv[1]);
+	pipe_and_exec(&pipex);
+	return (0);
+}	

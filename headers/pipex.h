@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 12:05:11 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/22 12:06:51 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/09 14:40:55 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-# define ERR_USER "Error : Pipex must me launch with at least 4 args \
+# define ERR_USER "Error : Pipex must me launch with 4 args \
+following this pattern:\n\t [input file] [cmd1] [cmd2] [output file]\n"
+# define ERR_USER_BONUS "Error : Pipex must me launch with at least 4 args \
 following this pattern:\n\t [input file] [cmd1] [cmd2] ... [cmdn] [output file]\n"
 # define ERR_USER_HERE_DOC "Error : Pipex must me launch with at least 5 args \
 using the here_doc. It must follow this pattern:\n\t \

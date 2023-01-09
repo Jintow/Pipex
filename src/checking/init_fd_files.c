@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_fd_files.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:28:53 by Teiki             #+#    #+#             */
-/*   Updated: 2022/12/22 12:07:41 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/09 18:40:18 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	get_path(t_pipe *pipex, char **env);
 	Function that checks the initials parameters 
 	depending on the here_doc option.
 */
-
 void	init_information(t_pipe *pipex, int argc, char **argv, char **env)
 {
 	if (ft_strcmp(argv[1], "here_doc") == 0)
@@ -44,7 +43,6 @@ void	init_information(t_pipe *pipex, int argc, char **argv, char **env)
 	outpout argument. If one of the corresping fd is invalid, it will 
 	display an error message
 */
-
 void	get_in_out_put(t_pipe *pipex, int argc, char **argv)
 {
 	int	errnum;
@@ -68,7 +66,6 @@ void	get_in_out_put(t_pipe *pipex, int argc, char **argv)
 /*
 	Function that retrieve the "PATH" environment of the program.
 */
-
 void	get_path(t_pipe *pipex, char **env)
 {
 	char	*path;
