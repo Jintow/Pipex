@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 19:41:33 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/09 17:29:47 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:29:32 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	make_cmd_path(t_pipe *pipex);
 */
 void	init_cmd(t_pipe *pipex, int argc, char **argv)
 {
-	if (argc >= 6 && ft_strcmp(argv[0], "here_doc") == 0)
+	if (ft_strcmp(argv[0], "here_doc") == 0)
 	{	
 		make_tab_cmd(pipex, &argv[2], argc - 3);
 	}
@@ -46,14 +46,14 @@ void	make_tab_cmd(t_pipe *pipex, char **str, int size)
 	pipex->tab_pipe = malloc(sizeof(int *) * (size + 1));
 	pipex->size = size;
 	if (!pipex->tab_cmd || !pipex->tab_pid || !pipex->tab_pipe)
-		error_exit(pipex, ERR_MALLOC);
+		error_exit(pipex, ERR_MALLOC, 1);
 	i = 0;
 	while (i < size)
 	{
 		pipex->tab_cmd[i] = ft_split(str[i], ' ');
 		pipex->tab_pipe[i] = calloc(2, sizeof(int));
 		if (!pipex->tab_cmd[i] || !pipex->tab_pipe[i])
-			error_exit(pipex, ERR_MALLOC);
+			error_exit(pipex, ERR_MALLOC, 1);
 		i++;
 	}
 	pipex->tab_cmd[i] = NULL;
@@ -70,20 +70,17 @@ void	make_tab_cmd(t_pipe *pipex, char **str, int size)
 void	make_cmd_path(t_pipe *pipex)
 {
 	int	i;
-	int	id_err;
 
-	i = 0;
-	while (pipex->tab_cmd[i])
+	i = -1;
+	while (pipex->tab_cmd[++i])
 	{
-		if (access(pipex->tab_cmd[i][0], X_OK) != 0)
+		if (!pipex->tab_cmd[i][0])
+			continue ;
+		else if (access(pipex->tab_cmd[i][0], X_OK) != 0)
 		{
-			id_err = find_path(&pipex->tab_cmd[i][0], pipex->cmd_path);
-			if (id_err == 0)
-				error_exit2(pipex, i);
-			if (id_err == -1)
-				error_exit(pipex, ERR_MALLOC);
+			if (find_path(&pipex->tab_cmd[i][0], pipex->cmd_path) == -1)
+				error_exit(pipex, ERR_MALLOC, 1);
 		}
-		i++;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 12:05:11 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/09 14:40:55 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/10 10:38:52 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_pipe
 	int		*tab_pid;
 	int		**tab_pipe;
 	int		size;
+	int		bonus;
 	char	***tab_cmd;
 	char	**env;
 	char	**cmd_path;
@@ -67,10 +68,9 @@ void	make_here_doc(t_pipe *pipex);
 void	init_cmd(t_pipe *pipex, int argc, char **argv);
 void	pipe_and_exec(t_pipe *pipex);
 void	read_and_write_result(t_pipe *pipex);
-void	error_exit(t_pipe *pipex, char *err_msg);
-void	error_exit2(t_pipe *pipex, int i);
+void	error_exit(t_pipe *pipex, char *err_msg, int id);
+void	error_exit2(t_pipe *pipex, char *cmd);
 void	error_exit3(t_pipe *pipex, char *err_msg);
-void	free_and_exit(t_pipe *pipex);
 void	gate_away(t_pipe *pipex);
 
 #endif

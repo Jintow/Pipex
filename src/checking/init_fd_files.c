@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:28:53 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/09 18:40:18 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/10 10:55:33 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	get_path(t_pipe *pipex, char **env);
 */
 void	init_information(t_pipe *pipex, int argc, char **argv, char **env)
 {
-	if (ft_strcmp(argv[1], "here_doc") == 0)
+	if (pipex->bonus && ft_strcmp(argv[1], "here_doc") == 0)
 	{
 		if (argc < 6)
 			error_exit3(pipex, ERR_USER_HERE_DOC);
@@ -45,20 +45,16 @@ void	init_information(t_pipe *pipex, int argc, char **argv, char **env)
 */
 void	get_in_out_put(t_pipe *pipex, int argc, char **argv)
 {
-	int	errnum;
-
 	pipex->fd_input = open(argv[1], O_RDONLY);
 	if (pipex->fd_input < 0)
 	{
-		errnum = EACCES;
-		ft_dprintf(2, "%s: %s: %s\n", ERR_INPUT, strerror(errnum), argv[1]);
+		ft_dprintf(2, "%s: %s: %s\n", ERR_INPUT, strerror(errno), argv[1]);
 	}
 	pipex->fd_output = open(argv[argc -1], O_WRONLY | O_TRUNC | \
 		O_CREAT, 0000644);
 	if (pipex->fd_output < 0)
 	{
-		errnum = EACCES;
-		ft_dprintf(2, "%s: %s: %s\n", ERR_OUTPUT, strerror(errnum), \
+		ft_dprintf(2, "%s: %s: %s\n", ERR_OUTPUT, strerror(errno), \
 			argv[argc - 1]);
 	}
 }
@@ -89,14 +85,11 @@ void	get_path(t_pipe *pipex, char **env)
 
 void	get_output_here_doc(t_pipe *pipex, char *output)
 {
-	int	errnum;
-
 	pipex->fd_output = open((output), O_WRONLY | O_TRUNC | \
 		O_CREAT, 0000644);
 	if (pipex->fd_output < 0)
 	{
-		errnum = EACCES;
-		ft_dprintf(2, "%s: %s: %s\n", ERR_OUTPUT, strerror(errnum), \
+		ft_dprintf(2, "%s: %s: %s\n", ERR_OUTPUT, strerror(errno), \
 			output);
 	}
 }
