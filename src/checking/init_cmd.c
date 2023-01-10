@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 19:41:33 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/10 11:29:32 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:14:51 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	make_cmd_path(t_pipe *pipex)
 {
 	int	i;
 
+	if (!pipex->cmd_path)
+		return ;
 	i = -1;
 	while (pipex->tab_cmd[++i])
 	{

@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 10:38:32 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/10 10:39:26 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/10 12:45:48 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	make_here_doc_tmp_file(t_pipe *pipex);
 void	make_here_doc(t_pipe *pipex)
 {
 	char	*line;
+	size_t	len_line;
 
 	if (read(STDIN_FILENO, NULL, 0) != 0)
 		error_exit3(pipex, ERR_STDIN);
@@ -32,8 +33,9 @@ void	make_here_doc(t_pipe *pipex)
 	{
 		ft_printf("pipe heredoc> ");
 		line = get_next_line(STDIN_FILENO, pipex);
-		if ((ft_strncmp(line, pipex->limiter, ft_strlen(line) - 1) == 0 && \
-			line[0] != '\n') || !(ft_strlen(line)))
+		len_line = ft_strlen(line);
+		if ((ft_strncmp(line, pipex->limiter, len_line - 1) == 0 && \
+			len_line - 1 == ft_strlen(pipex->limiter)) || !len_line)
 			break ;
 		pipex->here_doc = ft_strjoin_free_s1(pipex->here_doc, line);
 		if (!(pipex->here_doc))

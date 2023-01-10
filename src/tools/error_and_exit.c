@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:22:07 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/10 10:34:42 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/10 12:29:05 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	error_exit(t_pipe *pipex, char *err_msg, int id)
 		ft_free_tab((char **)pipex->tab_pipe);
 	if (id)
 		ft_free_tab3(pipex->tab_cmd);
-	if (pipex->here_doc)
+	if (id && pipex->here_doc)
 		free(pipex->here_doc);
 	if (err_msg)
 		perror(err_msg);

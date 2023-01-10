@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:56:57 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/10 09:53:58 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/10 12:28:46 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv, char **env)
 	pipex.env = NULL;
 	pipex.tab_pipe = NULL;
 	pipex.tab_pid = NULL;
+	pipex.here_doc = NULL;
 	init_information(&pipex, argc, argv, env);
 	init_cmd(&pipex, argc - 1, &argv[1]);
 	pipe_and_exec(&pipex);

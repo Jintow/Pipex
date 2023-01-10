@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:28:53 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/10 10:55:33 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:15:55 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	get_path(t_pipe *pipex, char **env)
 			break ;
 		i++;
 	}
+	if (!path)
+		return ;
 	pipex->cmd_path = ft_split(&path[5], ':');
 	if (!(pipex->cmd_path))
 	{

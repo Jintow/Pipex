@@ -6,7 +6,7 @@
 #    By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 13:00:31 by jlitaudo          #+#    #+#              #
-#    Updated: 2023/01/09 14:57:15 by jlitaudo         ###   ########.fr        #
+#    Updated: 2023/01/10 12:31:07 by jlitaudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,13 +116,13 @@ clean:
 			@echo "$(_RED)directory $(OBJ_DIR) deleted$(_END)"
 
 fclean: 	clean
-			@rm -f ${NAME}
+			@rm -f ${NAME} $(NAME_B)
 			@echo "$(_RED)$(_BOLD)$(NAME) deleted$(_END)"
 
 fcleanall:	clean
 			@make fclean -C $(LIBX_DIR)
 			@echo
-			@rm -f ${NAME}
+			@rm -f ${NAME} $(NAME_B)
 			@echo "$(_RED)$(_BOLD)$(NAME) deleted$(_END)"
 
 re: 		fclean $(NAME)
